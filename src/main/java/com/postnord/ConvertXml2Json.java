@@ -13,8 +13,8 @@ public class ConvertXml2Json {
     }
 
     public static String convertJsonString2Xml(String jsonString) {
-        byte[] bytes = jsonString.getBytes(StandardCharsets.UTF_8);
-            String encodedString = new String(bytes,StandardCharsets.UTF_8);
+        byte[] bytes = jsonString.getBytes(StandardCharsets.ISO_8859_1);
+            String encodedString = new String(bytes,StandardCharsets.ISO_8859_1);
             JSONObject json = new JSONObject(encodedString);
         return XML.toString(json);
     }
