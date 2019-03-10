@@ -4,18 +4,19 @@ import com.google.gson.Gson;
 import org.json.JSONObject;
 import org.json.XML;
 
+import java.nio.charset.StandardCharsets;
+
 public class ConvertXml2Json {
 
     public static String convertJsonObject2Xml(JSONObject json) {
-        String xml = XML.toString(json);
-        return xml;
+        return XML.toString(json);
     }
 
     public static String convertJsonString2Xml(String jsonString) {
-
-        JSONObject json = new JSONObject(jsonString);
-        String xml = XML.toString(json);
-        return xml;
+        byte[] bytes = jsonString.getBytes(StandardCharsets.UTF_8);
+            String encodedString = new String(bytes,StandardCharsets.UTF_8);
+            JSONObject json = new JSONObject(encodedString);
+        return XML.toString(json);
     }
 
     public static String convertJavaObjectToJsonString(Object simpleObject) {
